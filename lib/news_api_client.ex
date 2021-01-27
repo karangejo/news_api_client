@@ -4,7 +4,6 @@ defmodule NewsApiClient do
   """
 
   @base_url "https://newsapi.org/v2/"
-  @api_key System.get_env("NEWS_API_KEY")
 
   @doc """
   This endpoint provides live top and breaking headlines for a country, specific category in a country, single source, or multiple sources. You can also search with keywords. Articles are sorted by the earliest date published first.This endpoint is great for retrieving headlines for display on news tickers or similar.
@@ -81,9 +80,9 @@ defmodule NewsApiClient do
   string
   The unformatted content of the article, where available. This is truncated to 200 chars.
   """
-  def top_headlines(params \\ %{"pageSize" => "100", "country" => "us", "categories" => "science"}) do
+  def top_headlines(params \\ %{"pageSize" => "100", "country" => "us", "categories" => "science"}, api_key \\ System.get_env("NEWS_API_KEY")) do
     query_params = URI.encode_query(params)
-    headers = ["Authorization": "Bearer #{@api_key}", "Accept": "Application/json; Charset=utf-8"]
+    headers = ["Authorization": "Bearer #{api_key}", "Accept": "Application/json; Charset=utf-8"]
     {:ok, response} = HTTPoison.get(@base_url <> "top-headlines?" <> query_params, headers)
     Poison.decode!(response.body)
   end
@@ -197,9 +196,9 @@ defmodule NewsApiClient do
   string
   The unformatted content of the article, where available. This is truncated to 200 chars.
   """
-  def everything(params \\ %{"q" => "science"}) do
+  def everything(params \\ %{"q" => "science"}, api_key \\ System.get_env("NEWS_API_KEY")) do
     query_params = URI.encode_query(params)
-    headers = ["Authorization": "Bearer #{@api_key}", "Accept": "Application/json; Charset=utf-8"]
+    headers = ["Authorization": "Bearer #{api_key}", "Accept": "Application/json; Charset=utf-8"]
     {:ok, response} = HTTPoison.get(@base_url <> "everything?" <> query_params, headers)
     Poison.decode!(response.body)
   end
@@ -261,9 +260,9 @@ defmodule NewsApiClient do
   The country this news source is based in (and primarily writes about).
   """
 
-  def sources(params \\ %{}) do
+  def sources(params \\ %{}, api_key \\ System.get_env("NEWS_API_KEY")) do
     query_params = URI.encode_query(params)
-    headers = ["Authorization": "Bearer #{@api_key}", "Accept": "Application/json; Charset=utf-8"]
+    headers = ["Authorization": "Bearer #{api_key}", "Accept": "Application/json; Charset=utf-8"]
     {:ok, response} = HTTPoison.get(@base_url <> "sources?" <> query_params, headers)
     Poison.decode!(response.body)
   end

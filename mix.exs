@@ -4,7 +4,7 @@ defmodule NewsApiClient.MixProject do
   def project do
     [
       app: :news_api_client,
-      version: "0.1.0",
+      version: "0.1.1",
       elixir: "~> 1.11",
       start_permanent: Mix.env() == :prod,
       description: description(),
