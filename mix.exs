@@ -7,9 +7,9 @@ defmodule NewsApiClient.MixProject do
       version: "0.1.0",
       elixir: "~> 1.11",
       start_permanent: Mix.env() == :prod,
-      deps: deps(),
       description: description(),
       package: package(),
+      deps: deps(),
       source_url: "https://github.com/karangejo/news_api_client",
       name: "news_api_client",
       docs: [main: "NewsApiClient",
@@ -31,7 +31,7 @@ defmodule NewsApiClient.MixProject do
   defp package do
     [
       name: "news_api_client",
-      licences: ["MIT"],
+      licenses: ["MIT"],
       links: %{"GitHub" => "https://github.com/karangejo/news_api_client"}
     ]
   end
