@@ -10,6 +10,7 @@ defmodule NewsApiClient.MixProject do
       deps: deps(),
       description: description(),
       package: package(),
+      source_url: "https://github.com/karangejo/news_api_client",
       name: "news_api_client",
       docs: [main: "NewsApiClient",
             extras: ["README.md"]]
@@ -30,7 +31,8 @@ defmodule NewsApiClient.MixProject do
   defp package do
     [
       name: "news_api_client",
-      licences: ["MIT"]
+      licences: ["MIT"],
+      links: %{"GitHub" => "https://github.com/karangejo/news_api_client"}
     ]
   end
 
